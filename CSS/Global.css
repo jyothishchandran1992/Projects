@@ -1,5 +1,5 @@
 body {
-    background-color: #00E6E6;
+    background-color: #000006;
 }
 
 #loginform{
@@ -8,10 +8,10 @@ body {
 }
 
 .center_form{
-	background-color: whitesmoke;
-    padding: 10px;
-    border: 10px;
-	margin: 0 auto;
-    width:80%
-
+	#width: 50%;
+	#margin: 0px auto;
+	#padding: 15px 15px 15px;
+	#background: #F5F5F5;
+	#border-radius: 10px;
+    #background-color: blueviolet;
 }
