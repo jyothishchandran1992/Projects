@@ -15,7 +15,7 @@
   <div class="modal-dialog">
   <div class="modal-content" ng-controller="LoginPageController">
       <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+          <!--<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>-->
           <h1 class="text-center">Login</h1>
       </div>
       <div class="modal-body">
@@ -26,7 +26,7 @@
 			  <span ng-if="loginform.email.$invalid" class="glyphicon glyphicon-remove form-control-feedback"></span>
 			</div>			
             <div ng-class="{true: 'form-group has-success has-feedback' , false: 'form-group has-error has-feedback'}[!loginform.pwd.$invalid]">
-              <input type="password" name="pwd" class="form-control input-lg" placeholder="Password" ng-minlength="8" required>
+              <input type="password" name="pwd" class="form-control input-lg" placeholder="Password" ng-model="pwd.text" ng-minlength="8" ng-maxlength="25" required>
 			  <span ng-if="!loginform.pwd.$invalid" class="glyphicon glyphicon-ok form-control-feedback"></span>
 			  <span ng-if="loginform.pwd.$invalid" class="glyphicon glyphicon-remove form-control-feedback"></span>
             </div>
@@ -39,10 +39,13 @@
       </div>
       <div class="modal-footer">
 	  <div class="col-md-8">
-		  <p ng-show="loginform.email.$error.minlength" class="alert-sm alert-danger fade in pull-left">Your emailid is too short</p>
-		  <p ng-show="loginform.email.$touched && loginform.email.$invalid" class="alert-sm alert-danger fade in pull-left">Please Provide the correct Email Address</p>
-		  <p ng-show="loginform.pwd.$touched && loginform.pwd.$invalid && loginform.pwd.$error.minlength" class="alert-sm alert-danger fade in pull-left">Password is mandatory and should have minimum length of 8 characters</p>
-	  </div>
+			<p ng-show="loginform.email.$untouched" class="alert-sm alert-success fade in pull-left"><strong>Info!</strong> Please provide your email address and password</p>
+		  <p ng-show="loginform.email.$error.minlength" class="alert-sm alert-danger fade in pull-left"><strong>Error!</strong> Your email-id is too short</p>
+		  <p ng-show="loginform.email.$touched && loginform.email.$invalid" class="alert-sm alert-danger fade in pull-left"><Strong>Error!</Strong> Please provide the correct email-id</p>
+		  <p ng-show="loginform.pwd.$error.minlength" class="alert-sm alert-danger fade in pull-left"><Strong>Error!</Strong> Your password is too short</p>
+		  <p ng-show="loginform.pwd.$error.maxlength" class="alert-sm alert-danger fade in pull-left"><Strong>Error!</Strong> Your password cannot have more than 25 characters</p>
+		  <p ng-show="loginform.pwd.$touched && loginform.pwd.$invalid" class="alert-sm alert-danger fade in pull-left"><Strong>Error!</Strong> Password is mandatory</p>
+		</div>
           <div class="col-md-4">
           <button  class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
 		  </div>
