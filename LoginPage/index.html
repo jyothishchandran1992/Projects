@@ -17,23 +17,20 @@
       <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
           <h1 class="text-center">Login</h1>
-		  <div ng-show="email.valid" class="alert alert-danger fade in">
-		  <a href="#" class="close" data-dismiss="alert">&times;</a>
-			<p>{{email.errorrequiredempty}}</p>
-			<p>{{email.errorrequiredminlength}}</p>
-			<p>{{email.errorrequiredvalid}}</p>
-		  </div>
       </div>
       <div class="modal-body">
-          <form class="form col-md-12 center-block">
-            <div name="emailform" ng-class="email.class">
+          <form name="loginform" class="form col-md-12 center-block">
+            <div ng-class="{true: 'form-group has-success has-feedback' , false: 'form-group has-error has-feedback'}[!loginform.email.$invalid]">
               <input type="email" name="email" class="form-control input-lg" placeholder="Email" ng-model="email.text" ng-minlength="2" required ng-pattern="^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,6}$">
-			</div>
-			
-            <div class="form-group">
-              <input type="password" class="form-control input-lg" placeholder="Password">
+			  <span ng-if="!loginform.email.$invalid" class="glyphicon glyphicon-ok form-control-feedback"></span>
+			  <span ng-if="loginform.email.$invalid" class="glyphicon glyphicon-remove form-control-feedback"></span>
+			</div>			
+            <div ng-class="{true: 'form-group has-success has-feedback' , false: 'form-group has-error has-feedback'}[!loginform.pwd.$invalid]">
+              <input type="password" name="pwd" class="form-control input-lg" placeholder="Password" ng-minlength="8" required>
+			  <span ng-if="!loginform.pwd.$invalid" class="glyphicon glyphicon-ok form-control-feedback"></span>
+			  <span ng-if="loginform.pwd.$invalid" class="glyphicon glyphicon-remove form-control-feedback"></span>
             </div>
-            <div class="form-group">
+            <div ng-disabled="loginform.$invalid" class="form-group">
               <button class="btn btn-primary btn-lg btn-block">Sign In</button>
               <span class="pull-right"><a href="#">Register</a></span>
 			  <span><a href="#">Need help?</a></span>
@@ -41,8 +38,13 @@
           </form>
       </div>
       <div class="modal-footer">
-          <div class="col-md-12">
-          <button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
+	  <div class="col-md-8">
+		  <p ng-show="loginform.email.$error.minlength" class="alert-sm alert-danger fade in pull-left">Your emailid is too short</p>
+		  <p ng-show="loginform.email.$touched && loginform.email.$invalid" class="alert-sm alert-danger fade in pull-left">Please Provide the correct Email Address</p>
+		  <p ng-show="loginform.pwd.$touched && loginform.pwd.$invalid && loginform.pwd.$error.minlength" class="alert-sm alert-danger fade in pull-left">Password is mandatory and should have minimum length of 8 characters</p>
+	  </div>
+          <div class="col-md-4">
+          <button  class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
 		  </div>
       </div>
   </div>
