@@ -1,4 +1,4 @@
-# AngularJS
+# Projects
 Projects are as per below
 1st : 
 LoginPage : Contains the validation of email-id, password using angularjs and for view using bootstrap
