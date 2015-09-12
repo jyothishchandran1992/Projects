@@ -1,0 +1,26 @@
+.modal-footer {
+   border-top: 0px; 
+   }
+
+
+body{
+background-image : url("../image/colt-header2.jpg");
+background-repeat: no-repeat;
+background-size : initial;
+} 
+
+#logo{
+	padding: 20px;
+    height: initial;
+    width: initial;	
+}
+
+h1 , #text-center{
+	color : white;
+	font-size : 50px;
+}
+
+.awesome:hover { 
+height:50px;
+width:100px;
+ }
